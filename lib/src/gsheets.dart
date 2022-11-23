@@ -945,8 +945,8 @@ class Worksheet {
     this._columnCount,
     this.renderOption,
     this.inputOption,
-    this.hidden,
-  );
+    bool? hidden,
+  ): hidden = hidden ?? false;
 
   factory Worksheet._fromJson(
     Map<String, dynamic> sheetJson,
@@ -965,7 +965,7 @@ class Worksheet {
       sheetJson['properties']['gridProperties']['columnCount'],
       renderOption,
       inputOption,
-      sheetJson['properties']['hidden'],
+      sheetJson['properties']['hidden'] ?? false,
     );
   }
 
