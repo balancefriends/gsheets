@@ -301,7 +301,9 @@ class GSheets {
 }
 
 enum ValueRenderOption { formattedValue, unformattedValue, formula }
+
 enum ValueInputOption { userEntered, raw }
+
 enum ExportFormat { xlsx, csv, pdf }
 
 /// Class containing additional [Spreadsheet] data
@@ -908,6 +910,8 @@ class Worksheet {
   final int id;
   final String renderOption;
   final String inputOption;
+  /// True if the sheet is hidden in the UI, false if it's visible.
+  final bool hidden;
   String _title;
   int _index;
   int _rowCount;
@@ -941,6 +945,7 @@ class Worksheet {
     this._columnCount,
     this.renderOption,
     this.inputOption,
+    this.hidden,
   );
 
   factory Worksheet._fromJson(
@@ -960,6 +965,7 @@ class Worksheet {
       sheetJson['properties']['gridProperties']['columnCount'],
       renderOption,
       inputOption,
+      sheetJson['properties']['hidden'],
     );
   }
 
